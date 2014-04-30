@@ -9,11 +9,19 @@ A collection of Jade mixins for defining form fields. The style and structure fo
 - [Attributes](#attributes)
 
 
+
+
+
+* * *
+
+
+
+
 <a name="standalone"/>
 ## Standalone fields
 
 
-#### field
+### field
 
 The base input field that we extend to build everything.
 
@@ -34,9 +42,9 @@ Returns
 ```
 
 
-#### textarea
+### textarea
 
-A simple text area.
+A simple textarea.
 
 Accepted arguments:
 * name
@@ -54,12 +62,75 @@ Returns
 ```
 
 
-#### button
+### checkbox
+
+A simple checkbox.
+
+Accepted arguments:
+* name
+* value (optional: defaults to "true")
+* checked (Boolean)
+* disabled (Boolean)
+
+```Jade
++checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions', checked: true, disabled: true })
+```
+
+Returns
+
+```HTML
+<div class="checkbox">
+  <label>
+    <input type="checkbox" disabled="" checked="" value="true" id="acceptedTermsAndConditions" name="acceptedTermsAndConditions">
+    Accepted Terms and Conditions
+  </label>
+</div>
+```
+
+
+### address field
+
+A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/database/#fieldtypes-location)
+
+###### Note: the location field also stores "name", "number", "country", and "geo" whilst this mixin ignores them.
+
+Accepted arguments:
+* name
+* value (Object)
+
+```Jade
++address-field({ name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
+```
+
+Returns
+
+```HTML
+<div class="form-control-wrapper">
+  <input name="address.street1" value="Shop 36, 468 Oxford St" placeholder="Street 1" class="form-control" type="text">
+</div>
+<div class="form-control-wrapper">
+  <input name="address.street2" placeholder="Street 2" class="form-control" type="text">
+</div>
+<div class="form-control-wrapper">
+  <input name="address.suburb" value="Bondi" placeholder="Suburb" class="form-control" type="text">
+</div>
+<div class="form-control-wrapper form-control-row">
+  <div class="col-xs-6">
+    <input name="address.state" value="NSW" placeholder="State" class="form-control" type="text">
+  </div>
+  <div class="col-xs-6">
+    <input name="address.postcode" value="2098" placeholder="Postcode" class="form-control" type="text">
+  </div>
+</div>
+```
+
+
+### button
 
 Buttons replace `<input type="submit">` because they're more flexible
 
 Accepted arguments:
-* type (optional, defaults to "button")
+* type (optional: defaults to "button")
 * label
 * [attributes](#attributes): class (optional, defaults to "btn-default")
 
@@ -76,13 +147,19 @@ Returns
 
 
 
+* * *
+
+
+
+
 <a name="labelled"/>
 ## Labelled fields
 
 This is where Jade mixins really start to shine.
-Note: Labelled fields expect a parent '.form-horizontal' to display a label left of the field
 
-#### labelled field
+###### Note: Labelled fields expect a parent '.form-horizontal' to display a label left of the field
+
+### labelled field
 
 Accepted arguments:
 * label
@@ -102,6 +179,11 @@ Returns
   </div>
 </div>
 ```
+
+
+
+
+* * *
 
 
 
