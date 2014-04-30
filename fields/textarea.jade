@@ -1,0 +1,13 @@
+//- Textarea
+//- 
+//- Accepted arguments:
+//- * name
+//- * value
+//- * placeholder
+
+mixin textarea(args)
+	textarea(
+		name=args.name ? args.name : null
+		placeholder=args.placeholder ? args.placeholder : null
+		class=attributes.class
+		id=attributes.id).form-control= args.value ? args.value : null

@@ -1,0 +1,4 @@
+mixin checkbox(args)
+	.checkbox: label
+		input(type='checkbox', name=args.name, id=args.name, value=args.value ? args.value : 'true', checked=args.checked, disabled=args.disabled)
+		!= args.label

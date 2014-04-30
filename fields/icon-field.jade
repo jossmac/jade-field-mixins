@@ -1,0 +1,14 @@
+//- Icon field
+//- 
+//- Display an icon left of the field for neat, inline context
+//- 
+//- Accepted arguments:
+//- * icon (eg; "ion-social-twitter") http://ionicons.com/cheatsheet.html
+//- * field args (type, name, value, placeholder)
+
+include field
+
+mixin icon-field(args)
+	.icon-field
+		span(class=args.icon).icon
+		+field(args)

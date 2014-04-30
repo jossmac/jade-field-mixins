@@ -1,0 +1,18 @@
+//- Base field
+//- 
+//- Accepted arguments:
+//- * type
+//- * name
+//- * value
+//- * placeholder
+
+mixin field(args)
+	input.form-control(
+		type=args.type ? args.type : null
+		name=args.name ? args.name : null
+		value=args.value ? args.value : null
+		placeholder=args.placeholder ? args.placeholder : null
+		class=attributes.class
+		id=attributes.id)
+
+

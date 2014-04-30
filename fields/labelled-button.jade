@@ -1,0 +1,15 @@
+//- Submit button
+//- 
+//- Used inside '.form-horizontal' to offset labels
+//- 
+//- Accepted arguments:
+//- * label
+
+include button
+
+mixin labelled-button(args)
+	.form-group
+		.col-sm-9.col-sm-offset-3
+			+button(args)(id=attributes.id,class=attributes.class)
+			if args.info
+				.form-info= args.info

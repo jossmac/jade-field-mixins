@@ -1,0 +1,16 @@
+//- Base upload
+//- 
+//- Accepted arguments:
+//- * type
+//- * name
+//- * (attributes)
+
+mixin upload(args)
+	.form-control--upload
+		input(
+			type='file'
+			name=args.name ? args.name : null
+			class=attributes.class
+			id=attributes.id)
+
+

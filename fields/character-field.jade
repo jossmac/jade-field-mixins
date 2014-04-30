@@ -1,0 +1,14 @@
+//- Character field
+//- 
+//- Display a character left of the field for neat, inline context
+//- 
+//- Accepted arguments:
+//- * character
+//- * field args (type, name, value, placeholder)
+
+include field
+
+mixin character-field(args)
+	.character-field
+		span.character= args.character
+		+field(args)

@@ -1,0 +1,7 @@
+mixin labelled-readonly-field(args)
+	.form-group
+		label.col-xs-3= args.label
+		if args.url
+			.col-xs-9: a(href=args.url, title='View the ' + args.label)= args.value
+		else
+			.col-xs-9= args.value
