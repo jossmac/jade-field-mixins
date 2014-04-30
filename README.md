@@ -1,7 +1,9 @@
 Jade field mixins
 =================
 
-A collection of Jade mixins for defining form fields. The style and structure follow [Bootstrap's](https://github.com/twbs/bootstrap) form definition. Initially crafted for recreating dashboards using [KeystoneJS](https://github.com/JedWatson/keystone)
+A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defining form fields. The style and structure follow [Bootstrap's](https://github.com/twbs/bootstrap) form definition. Initially crafted for recreating dashboards using [KeystoneJS](https://github.com/JedWatson/keystone).
+
+To get a better idea of how you might use them checkout the [real world example](http://www.jossmackison.me/codepen/field-mixins).
 
 ##### Table of Contents  
 - [Attributes](#attributes)
@@ -14,7 +16,7 @@ A collection of Jade mixins for defining form fields. The style and structure fo
 <a name="attributes"/>
 ## Attributes
 
-Note that all mixins accept appended attributes so you can your add own classes and IDs, which can . For instance:
+All mixins accept appended attributes so you can your add own classes and IDs. For instance:
 
 ```Jade
 +mixin({args})#special-field
@@ -150,9 +152,7 @@ Which yields:
 
 ### Button
 
-Buttons replace `<input type="submit">` because they're more flexible
-
-Accepted arguments:
+Buttons replace `<input type="submit">` because they're more flexible. Accepted arguments:
 * type (optional: defaults to "button")
 * label
 * [attributes](#attributes): class (optional, defaults to "btn-default")
@@ -172,6 +172,8 @@ Which yields:
 
 <a name="labelled"/>
 ## Labelled fields
+
+Labelled fields include their dependent mixins so you don't have to. "labelled-field" includes "field" etc.
 
 ###### Note: Labelled fields expect a parent '.form-horizontal' to display a label left of the field
 
