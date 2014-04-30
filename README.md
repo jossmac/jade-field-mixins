@@ -1,7 +1,7 @@
-Jade field mixins
+Jade Field Mixins
 =================
 
-A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defining form fields. The style and structure follow [Bootstrap's](https://github.com/twbs/bootstrap) form definition. Initially crafted for recreating dashboards using [KeystoneJS](https://github.com/JedWatson/keystone).
+A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defining form fields. The style and structure follow [Bootstrap's](https://github.com/twbs/bootstrap) form implementation. Initially crafted for recreating dashboards using [KeystoneJS](https://github.com/JedWatson/keystone).
 
 To get a better idea of how you might use them checkout the [real world example](http://www.jossmackison.me/codepen/field-mixins).
 
@@ -45,7 +45,7 @@ The base input field that we extend to build everything. Accepted arguments:
 * placeholder
 
 ```Jade
-+field({ type: 'email', name: 'email', value: '', placeholder: 'email@example.com' })
++field({ type: "email", name: "email", value: "", placeholder: "email@example.com" })
 ```
 
 Which yields:
@@ -63,7 +63,7 @@ A simple textarea. Accepted arguments:
 * placeholder
 
 ```Jade
-+textarea({ name: 'message', value: 'Hi there', placeholder: 'Message' })
++textarea({ name: "message", value: "Hi there", placeholder: "Message" })
 ```
 
 Which yields:
@@ -82,7 +82,7 @@ A simple checkbox. Accepted arguments:
 * disabled (Boolean)
 
 ```Jade
-+checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions' })
++checkbox({ label: "Accepted Terms and Conditions", name: "acceptedTermsAndConditions" })
 ```
 
 Which yields:
@@ -106,7 +106,7 @@ A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/dat
 * value (Object)
 
 ```Jade
-+address-field({ name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
++address-field({ name: "location", value: { street1: "Shop 36, 468 Oxford St", suburb: "Bondi", state: "NSW", postcode: "2098" } }).input-lg
 ```
 
 Which yields:
@@ -138,7 +138,7 @@ Browsers provide nice, native UI for file fields; let them handle it. Accepted a
 * type
 
 ```Jade
-+upload({ name: 'image' })
++upload({ name: "image" })
 ```
 
 Which yields:
@@ -158,7 +158,7 @@ Buttons replace `<input type="submit">` because they're more flexible. Accepted 
 * [attributes](#attributes): class (optional, defaults to "btn-default")
 
 ```Jade
-+button({ label: 'Save changes', type: 'submit'}).btn-primary
++button({ label: "Save changes", type: "submit'}).btn-primary
 ```
 
 Which yields:
@@ -184,7 +184,7 @@ Accepted arguments:
 * field args (type, name, value, placeholder)
 
 ```Jade
-+labelled-field({ label: 'Admin Name', name: 'name', type: 'text', value: 'TJ Holowaychuk' })
++labelled-field({ label: "Admin Name", name: "name", type: "text", value: "TJ Holowaychuk" })
 ```
 
 Which yields:
@@ -208,7 +208,7 @@ Accepted arguments:
 * placeholder
 
 ```Jade
-+labelled-textarea({ label: 'Summary', name: 'summary', value: 'Programmer, author & artist. Creator of the Luna programming language, Express, Koa, Stylus, Component, Mocha, Jade, rework, node-canvas and others. Pastafarian', placeholder: 'Tell us about yourself' })
++labelled-textarea({ label: "Summary", name: "summary", value: "Programmer, author & artist. Creator of the Luna programming language, Express, Koa, Stylus, Component, Mocha, Jade, rework, node-canvas and others. Pastafarian", placeholder: "Tell us about yourself" })
 ```
 
 Which yields:
@@ -232,7 +232,7 @@ Accepted arguments:
 * disabled (Boolean)
 
 ```Jade
-+checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions', checked: true, disabled: true })
++checkbox({ label: "Accepted Terms and Conditions", name: "acceptedTermsAndConditions", checked: true, disabled: true })
 ```
 
 Which yields:
@@ -249,14 +249,14 @@ Which yields:
 
 ### Labelled Address field
 
-###### Note: the location field also stores "name", "number", "country", and "geo" whilst this mixin ignores them.
+###### Note: the location field also stores "name", "number", "country", and "geo".
 
 A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/database/#fieldtypes-location). Accepted arguments:
 * name
 * value (Object)
 
 ```Jade
-+address-field({ label: 'Address', name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
++address-field({ label: "Address", name: "location", value: { street1: "Shop 36, 468 Oxford St", suburb: "Bondi", state: "NSW", postcode: "2098" } }).input-lg
 ```
 
 Which yields:
@@ -293,7 +293,7 @@ Browsers provide nice, native UI for file fields; let them handle it. Accepted a
 * type
 
 ```Jade
-+labelled-upload({ label: 'Image', name: 'image' })
++labelled-upload({ label: "Image", name: "image" })
 ```
 
 Which yields:
@@ -318,7 +318,7 @@ Offset the button so it's inline with the other fields. Accepted arguments:
 * [attributes](#attributes): class (optional, defaults to "btn-default")
 
 ```Jade
-+labelled-button({ label: 'Click me' })
++labelled-button({ label: "Click me" })
 ```
 
 Which yields:
