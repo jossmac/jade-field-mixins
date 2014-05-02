@@ -1,5 +1,5 @@
 //
-// Forms
+// Fields
 // ==============================
 
 // Extends Bootstrap's arsenal
@@ -8,94 +8,119 @@
 
 
 
-// Labels
+// Misc
 // -------------------------
+
+
+// bootstrap uses chubby labels
 
 label {
 	font-weight: normal;
 }
 
-.form-label--aligned,
+
+// stop users pulling the textarea out of it's column
+// and provide some room to write
+
+textarea {
+	.resizable(vertical);
+	min-height: 80px;
+}
+
+
+// properly align your label to the text inside the input field
+
 .form-horizontal .form-group > label {
 	padding-top: @padding-base-vertical;
 }
 
+
+// when you need to give your users' a helping hand
+
 .form-info {
+	color: #999;
+	font-size: .85em;
 	margin-top: 5px;
 	margin-bottom: 0px;
-	color: #999;
-	font-size: 12px;
 }
 
 
-// Fields
+
+
+// Controls
 // -------------------------
+
+
+// base
 
 .form-control {
 	color: @text-color;
 	font-size: inherit;
-	// height: auto;
 	-webkit-appearance: none;
 }
+
+
+// helpers
+
 .full-width {
 	width: 100%;
 }
 
-// bootstrap uses px, we use ems. stop these fields looking ridiculous
-.input-sm,
-.input-lg {
-	height: auto;
-}
 
-// alternative to '.form-group' to negate the negative margin that comes
-// from '.form-horizontal'
+// alternative to '.form-group' use when inside '.form-horizontal' to avoid 
+// your container becoming a row
+
 .form-control-wrapper {
 	margin-bottom: 1em;
 }
 
-// use as an alternative to ".row"
-// for form columns to avoid the _huge_ gap
+
+// use as an alternative to ".row" for form columns to avoid the _huge_ gap
+
 .form-control-row {
 	.clearfix();
 	margin-left: -5px;
 	margin-right: -5px;
 	
+	
 	// whilst this selector performs poorly it's not a big deal in small apps
+	
 	[class^='col-'] {
 		padding-left: 5px;
 		padding-right: 5px;
 	}
 }
 
-// stop user pulling the textarea out of it's column
-textarea {
-	.resizable(vertical);
-	min-height: 80px;
-}
 
 // optimal font size for browser buttons
+
 .form-control--upload {
 	font-size: 13px;
 	padding-top: @padding-base-vertical;
 }
 
-// widths for fields inside '.form-inline'
-.form-inline .field-inline-xs { width: 50px; }
-.form-inline .field-inline-sm { width: 100px; }
-.form-inline .field-inline-md { width: 200px; }
-.form-inline .field-inline-lg { width: 300px; }
-.form-inline .field-inline-xl { width: 400px; }
+
+// define widths for fields inside '.form-inline'
+// browsers default to ~150px
+
+.field-inline-xs { width: 50px; }
+.field-inline-sm { width: 100px; }
+.field-inline-md { width: 200px; }
+.field-inline-lg { width: 300px; }
+.field-inline-xl { width: 400px; }
 
 
-// Icon Fields
+
+
+// Icon & Character Fields
 // ------------------------------
 
-.icon-field {
+
+// setup
+
+.icon-field,
+.character-field {
 	position: relative;
-	
-	.form-control {
-		padding-left: ceil(@font-size-base * 1.5) + @padding-base-horizontal;
-	}
 	
 	.icon {
 		.translate(0,-50%);
@@ -110,25 +135,26 @@ textarea {
 }
 
 
-// Character Fields
-// ------------------------------
+// icon field
+
+.icon-field {
+	.form-control {
+		padding-left: ceil(@font-size-base * 1.5) + @padding-base-horizontal;
+	}
+	.icon {
+		left: @padding-base-horizontal;
+	}
+}
+
+
+// character field
 
 .character-field {
-	position: relative;
-	
 	.form-control {
 		padding-left: @padding-base-horizontal + (@padding-base-horizontal / 2);
 	}
-	
 	.character {
-		.translate(0,-50%);
-		color: @input-color-placeholder;
 		left: @padding-base-horizontal / 2;
-		position: absolute;
-		pointer-events: none;
-		text-align: center;
-		top: 50%;
-		width: @padding-base-horizontal;
 	}
 }
 

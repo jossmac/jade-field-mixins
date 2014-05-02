@@ -1,12 +1,17 @@
-//- Base field
+//- Checkbox
 //- 
 //- Accepted arguments:
-//- * name
-//- * value (optional: defaults to "true")
+//- * name (String)
+//- * value (String) : defaults to "true"
 //- * checked (Boolean)
 //- * disabled (Boolean)
 
 mixin checkbox(args)
-	.checkbox: label
-		input(type='checkbox', name=args.name, id=args.name, value=args.value ? args.value : 'true', checked=args.checked, disabled=args.disabled)
+	.checkbox(id=attributes.id, class=attributes.class): label
+		input(
+			type='checkbox'
+			name=args.name
+			value=args.value ? args.value : 'true'
+			checked=args.checked
+			disabled=args.disabled)
 		!= args.label

@@ -1,11 +1,11 @@
 //- Button
 //- 
 //- Accepted arguments:
-//- * type (optional, defaults to "button")
-//- * label
+//- * type (String) : defaults to "button"
+//- * buttonlabel (String)
 
 mixin button(args)
 	button.btn(
 		type=args.type ? args.type : 'button'
-		class=attributes.class ? attributes.class : 'btn-default')= args.label
+		class=attributes.class ? attributes.class : 'btn-default')= args.buttonlabel
 

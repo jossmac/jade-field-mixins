@@ -1,7 +1,7 @@
-Jade Field Mixins
-=================
+Field Mixins
+============
 
-A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defining form fields. The style and structure follow [Bootstrap's](https://github.com/twbs/bootstrap) form implementation. Initially crafted for recreating dashboards using [KeystoneJS](https://github.com/JedWatson/keystone).
+A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defining form fields. Whilst anyone is welcome to use these mixins they were initially crafted for recreating a front-end admin UI for [KeystoneJS](https://github.com/JedWatson/keystone) applications. The style and structure follows [Bootstrap's](https://github.com/twbs/bootstrap) form implementation, but could easily be repurposed.
 
 To get a better idea of how you might use them checkout the [real world example](http://www.jossmackison.me/codepen/field-mixins).
 
@@ -39,31 +39,31 @@ They can also be chained:
 ### Field
 
 The base input field that we extend to build everything. Accepted arguments:
-* type
-* name
-* value
-* placeholder
+* type (String) (String)
+* name (String) (String)
+* value (String) (String)
+* placeholder (String) (String)
 
 ```Jade
-+field({ type: "email", name: "email", value: "", placeholder: "email@example.com" })
++field({ type: 'email', name: 'email', value: 'email@example.com', placeholder: 'Email Address' })
 ```
 
 Which yields:
 
 ```HTML
-<input type="email" class="form-control" name="email" placeholder="email@example.com">
+<input type="email" class="form-control" name="email" value="email@example.com" placeholder="Email Address">
 ```
 
 
 ### Textarea
 
 A simple textarea. Accepted arguments:
-* name
-* value
-* placeholder
+* name (String)
+* value (String)
+* placeholder (String)
 
 ```Jade
-+textarea({ name: "message", value: "Hi there", placeholder: "Message" })
++textarea({ name: 'message', value: 'Hi there', placeholder: 'Message' })
 ```
 
 Which yields:
@@ -76,13 +76,13 @@ Which yields:
 ### Checkbox
 
 A simple checkbox. Accepted arguments:
-* name
-* value (optional: defaults to "true")
+* name (String)
+* value (String) : defaults to "true"
 * checked (Boolean)
 * disabled (Boolean)
 
 ```Jade
-+checkbox({ label: "Accepted Terms and Conditions", name: "acceptedTermsAndConditions" })
++checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions' })
 ```
 
 Which yields:
@@ -99,14 +99,14 @@ Which yields:
 
 ### Address field
 
-###### Note: the location field also stores "name", "number", "country", and "geo" whilst this mixin ignores them.
-
 A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/database/#fieldtypes-location). Accepted arguments:
-* name
-* value (Object)
+* name (String)
+* value (Object) { street1, street2, suburb, state, postcode }
+
+###### Note: the location field also stores "name', "number', "country', and "geo" whilst this mixin ignores them.
 
 ```Jade
-+address-field({ name: "location", value: { street1: "Shop 36, 468 Oxford St", suburb: "Bondi", state: "NSW", postcode: "2098" } }).input-lg
++address-field({ name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
 ```
 
 Which yields:
@@ -135,10 +135,10 @@ Which yields:
 ### Upload
 
 Browsers provide nice, native UI for file fields; let them handle it. Accepted arguments:
-* type
+* name (String)
 
 ```Jade
-+upload({ name: "image" })
++upload({ name: 'image' })
 ```
 
 Which yields:
@@ -150,15 +150,62 @@ Which yields:
 ```
 
 
-### Button
+### Icon Field
 
-Buttons replace `<input type="submit">` because they're more flexible. Accepted arguments:
-* type (optional: defaults to "button")
-* label
-* [attributes](#attributes): class (optional, defaults to "btn-default")
+Display an icon left of the field to indicate context to the user eg; "ion-social-twitter" from the amazing [Ionicons icon set](http://ionicons.com)
+
+This was built for icon fonts though should work fine with sprited images.
+
+Accepted arguments:
+* icon (String)
+* field args (type, name, value, placeholder)
 
 ```Jade
-+button({ label: "Save changes", type: "submit'}).btn-primary
++icon-field({ type: 'text', name: 'twitter', icon: 'ion-social-twitter' })
+```
+
+Which yields:
+
+```HTML
+<div class="icon-field">
+  <span class="ion-social-twitter icon"></span>
+  <input type="text" class="form-control" name="twitter">
+</div>
+```
+
+
+### Character Field
+
+Display a character left of the field to indicate context to the user eg; "$" for a money field
+
+Accepted arguments:
+* character (String)
+* field args (type, name, value, placeholder)
+
+```Jade
++icon-field({ type: 'text', name: 'twitter', icon: 'ion-social-twitter' })
+```
+
+Which yields:
+
+```HTML
+<div class="icon-field">
+  <span class="ion-social-twitter icon"></span>
+  <input type="text" class="form-control" name="twitter">
+</div>
+```
+
+
+### Button
+
+Buttons rather than `<input type="submit">` because they're more flexible. Accepted arguments:
+* type (String) : defaults to "button"
+* label (String)
+
+###### Note: the button class defaults to "btn-default". See [attributes](#attributes)
+
+```Jade
++button({ buttonlabel: 'Save changes', type: 'submit'}).btn-primary
 ```
 
 Which yields:
@@ -180,11 +227,11 @@ Labelled fields include their dependent mixins so you don't have to. "labelled-f
 ### Labelled field
 
 Accepted arguments:
-* label
+* label (String)
 * field args (type, name, value, placeholder)
 
 ```Jade
-+labelled-field({ label: "Admin Name", name: "name", type: "text", value: "TJ Holowaychuk" })
++labelled-field({ label: 'Admin Name', name: 'name', type: 'text', value: 'TJ Holowaychuk' })
 ```
 
 Which yields:
@@ -202,13 +249,11 @@ Which yields:
 ### Labelled Textarea
 
 Accepted arguments:
-* label
-* name
-* value
-* placeholder
+* label (String)
+* field args (name, value, placeholder)
 
 ```Jade
-+labelled-textarea({ label: "Summary", name: "summary", value: "Programmer, author & artist. Creator of the Luna programming language, Express, Koa, Stylus, Component, Mocha, Jade, rework, node-canvas and others. Pastafarian", placeholder: "Tell us about yourself" })
++labelled-textarea({ label: 'Summary', name: 'summary', value: 'Programmer, author & artist. Creator of the Luna programming language, Express, Koa, Stylus, Component, Mocha, Jade, rework, node-canvas and others. Pastafarian', placeholder: 'Tell us about yourself' })
 ```
 
 Which yields:
@@ -226,13 +271,14 @@ Which yields:
 ### Labelled Checkbox
 
 Accepted arguments:
-* name
-* value (optional: defaults to "true")
+* label (String)
+* name (String)
+* value (String) : defaults to "true"
 * checked (Boolean)
 * disabled (Boolean)
 
 ```Jade
-+checkbox({ label: "Accepted Terms and Conditions", name: "acceptedTermsAndConditions", checked: true, disabled: true })
++checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions', checked: true, disabled: true })
 ```
 
 Which yields:
@@ -249,14 +295,15 @@ Which yields:
 
 ### Labelled Address field
 
-###### Note: the location field also stores "name", "number", "country", and "geo".
-
 A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/database/#fieldtypes-location). Accepted arguments:
-* name
-* value (Object)
+* label (String)
+* name (String)
+* value (Object) { street1, street2, suburb, state, postcode }
+
+###### Note: the location field also stores "name', "number', "country', and "geo".
 
 ```Jade
-+address-field({ label: "Address", name: "location", value: { street1: "Shop 36, 468 Oxford St", suburb: "Bondi", state: "NSW", postcode: "2098" } }).input-lg
++address-field({ label: 'Address', name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
 ```
 
 Which yields:
@@ -290,10 +337,11 @@ Which yields:
 ### Labelled Upload
 
 Browsers provide nice, native UI for file fields; let them handle it. Accepted arguments:
-* type
+* label (String)
+* name (String)
 
 ```Jade
-+labelled-upload({ label: "Image", name: "image" })
++labelled-upload({ label: 'Image', name: 'image' })
 ```
 
 Which yields:
@@ -312,13 +360,14 @@ Which yields:
 
 ### Labelled Button
 
-Offset the button so it's inline with the other fields. Accepted arguments:
-* type (optional: defaults to "button")
-* label
-* [attributes](#attributes): class (optional, defaults to "btn-default")
+Offset the button so its inline with the rest of the fields. Leaving the label column empty. Accepted arguments:
+* type (String) : defaults to "button"
+* label (String)
+
+###### Note: the button class defaults to "btn-default". See [attributes](#attributes)
 
 ```Jade
-+labelled-button({ label: "Click me" })
++labelled-button({ buttonlabel: 'Click me' })
 ```
 
 Which yields:

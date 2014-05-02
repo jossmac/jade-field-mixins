@@ -1,9 +1,11 @@
-//- Submit button
+//- Labelled button
 //- 
-//- Used inside '.form-horizontal' to offset labels
+//- Offset the button so its inline with the rest of the fields. Leaving the
+//- label column empty. Optionally add some help text on a new line.
 //- 
 //- Accepted arguments:
-//- * label
+//- * helptext (String) [optional]
+//- * field args (type, label)
 
 include button
 
@@ -11,5 +13,5 @@ mixin labelled-button(args)
 	.form-group
 		.col-sm-9.col-sm-offset-3
 			+button(args)(id=attributes.id,class=attributes.class)
-			if args.info
-				.form-info= args.info
+			if args.helptext
+				.help-block= args.helptext
