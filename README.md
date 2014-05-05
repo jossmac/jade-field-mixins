@@ -3,30 +3,12 @@ Field Mixins
 
 A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defining form fields. Whilst anyone is welcome to use these mixins they were initially crafted for recreating a front-end admin UI for [KeystoneJS](https://github.com/JedWatson/keystone) applications. The style and structure follows [Bootstrap's](https://github.com/twbs/bootstrap) form implementation, but could easily be repurposed.
 
-To get a better idea of how you might use them checkout the [real world example](http://www.jossmackison.me/codepen/field-mixins).
+To get a better idea of how you might use them checkout the [real world example](http://www.jossmackison.me/playpen/field-mixins).
 
 ##### Table of Contents  
-- [Attributes](#attributes)
 - [Standalone fields](#standalone)
 - [Labelled fields](#labelled)
-
-
-
-
-<a name="attributes"/>
-## Attributes
-
-All mixins accept appended attributes so you can your add own classes and IDs. For instance:
-
-```Jade
-+mixin({args})#special-field
-+mixin({args}).big-field
-```
-They can also be chained:
-
-```Jade
-+mixin({args})#special-field.big-field.light-text
-```
+- [Attributes](#attributes)
 
 
 
@@ -39,16 +21,16 @@ They can also be chained:
 ### Field
 
 The base input field that we extend to build everything. Accepted arguments:
-* type (String) (String)
-* name (String) (String)
-* value (String) (String)
-* placeholder (String) (String)
+* type (String) : defaults to "text"
+* name (String)
+* value (String)
+* placeholder (String)
 
 ```Jade
 +field({ type: 'email', name: 'email', value: 'email@example.com', placeholder: 'Email Address' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <input type="email" class="form-control" name="email" value="email@example.com" placeholder="Email Address">
@@ -66,7 +48,7 @@ A simple textarea. Accepted arguments:
 +textarea({ name: 'message', value: 'Hi there', placeholder: 'Message' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <textarea name="message" class="form-control" placeholder="Message">Hi there</textarea>
@@ -76,22 +58,23 @@ Which yields:
 ### Checkbox
 
 A simple checkbox. Accepted arguments:
+* checkboxlabel (String)
 * name (String)
 * value (String) : defaults to "true"
 * checked (Boolean)
 * disabled (Boolean)
 
 ```Jade
-+checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions' })
++checkbox({ checkboxlabel: 'I accept the Terms and Conditions', name: 'acceptedTermsAndConditions' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="checkbox">
   <label>
-    <input type="checkbox" value="true" id="acceptedTermsAndConditions" name="acceptedTermsAndConditions">
-    Accepted Terms and Conditions
+    <input type="checkbox" value="true" name="acceptedTermsAndConditions">
+    I accept the Terms and Conditions
   </label>
 </div>
 ```
@@ -103,13 +86,14 @@ A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/dat
 * name (String)
 * value (Object) { street1, street2, suburb, state, postcode }
 
-###### Note: the location field also stores "name', "number', "country', and "geo" whilst this mixin ignores them.
+> ###### Note
+> The location field also stores "name', "number', "country', and "geo" whilst this mixin ignores them.
 
 ```Jade
 +address-field({ name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="form-control-wrapper">
@@ -141,7 +125,7 @@ Browsers provide nice, native UI for file fields; let them handle it. Accepted a
 +upload({ name: 'image' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="field-upload">
@@ -164,7 +148,7 @@ Accepted arguments:
 +icon-field({ type: 'text', name: 'twitter', icon: 'ion-social-twitter' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="icon-field">
@@ -186,7 +170,7 @@ Accepted arguments:
 +icon-field({ type: 'text', name: 'twitter', icon: 'ion-social-twitter' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="icon-field">
@@ -200,18 +184,19 @@ Which yields:
 
 Buttons rather than `<input type="submit">` because they're more flexible. Accepted arguments:
 * type (String) : defaults to "button"
-* label (String)
+* buttonlabel (String)
 
-###### Note: the button class defaults to "btn-default". See [attributes](#attributes)
+> ###### Note
+> The button class defaults to "btn-default". See [attributes](#attributes)
 
 ```Jade
-+button({ buttonlabel: 'Save changes', type: 'submit'}).btn-primary
++button({ buttonlabel: 'Save changes', type: 'submit'})
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
-<button type="submit" class="btn btn-primary">Save changes</button>
+<button type="submit" class="btn btn-default">Save changes</button>
 ```
 
 
@@ -220,9 +205,7 @@ Which yields:
 <a name="labelled"/>
 ## Labelled fields
 
-Labelled fields include their dependent mixins so you don't have to. "labelled-field" includes "field" etc.
-
-###### Note: Labelled fields expect a parent '.form-horizontal' to display a label left of the field
+Labelled fields include their dependent mixins so you don't have to. For instance "+labelled-field()" includes "mixin field()" etc. These mixins expect a parent of '.form-horizontal' to display a label left of the field. Learn more about [Bootsrap forms](http://getbootstrap.com/css/#forms-horizontal)
 
 ### Labelled field
 
@@ -234,7 +217,7 @@ Accepted arguments:
 +labelled-field({ label: 'Admin Name', name: 'name', type: 'text', value: 'TJ Holowaychuk' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="form-group">
@@ -256,7 +239,7 @@ Accepted arguments:
 +labelled-textarea({ label: 'Summary', name: 'summary', value: 'Programmer, author & artist. Creator of the Luna programming language, Express, Koa, Stylus, Component, Mocha, Jade, rework, node-canvas and others. Pastafarian', placeholder: 'Tell us about yourself' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="form-group">
@@ -270,25 +253,29 @@ Which yields:
 
 ### Labelled Checkbox
 
-Accepted arguments:
-* label (String)
+Offset the checkbox so its inline with the rest of the fields, leaving the label column empty. Accepted arguments:
+* checkboxlabel (String)
 * name (String)
 * value (String) : defaults to "true"
 * checked (Boolean)
 * disabled (Boolean)
 
 ```Jade
-+checkbox({ label: 'Accepted Terms and Conditions', name: 'acceptedTermsAndConditions', checked: true, disabled: true })
++checkbox({ checkboxlabel: 'I accept the Terms and Conditions', name: 'acceptedTermsAndConditions', checked: true, disabled: true })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
-<div class="checkbox">
-  <label>
-    <input type="checkbox" disabled="" checked="" value="true" id="acceptedTermsAndConditions" name="acceptedTermsAndConditions">
-    Accepted Terms and Conditions
-  </label>
+<div class="form-group">
+  <div class="col-sm-9 col-sm-offset-3">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" disabled="" checked="" value="true" name="acceptedTermsAndConditions">
+        I accept the Terms and Conditions
+      </label>
+    </div>
+  </div>
 </div>
 ```
 
@@ -300,13 +287,14 @@ A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/dat
 * name (String)
 * value (Object) { street1, street2, suburb, state, postcode }
 
-###### Note: the location field also stores "name', "number', "country', and "geo".
+> ###### Note
+> The location field also stores "name', "number', "country', and "geo".
 
 ```Jade
 +address-field({ label: 'Address', name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="form-group">
@@ -344,7 +332,7 @@ Browsers provide nice, native UI for file fields; let them handle it. Accepted a
 +labelled-upload({ label: 'Image', name: 'image' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="form-group">
@@ -362,15 +350,16 @@ Which yields:
 
 Offset the button so its inline with the rest of the fields. Leaving the label column empty. Accepted arguments:
 * type (String) : defaults to "button"
-* label (String)
+* buttonlabel (String)
 
-###### Note: the button class defaults to "btn-default". See [attributes](#attributes)
+> ###### Note
+> The button class defaults to "btn-default". See [attributes](#attributes)
 
 ```Jade
 +labelled-button({ buttonlabel: 'Click me' })
 ```
 
-Which yields:
+Will yield:
 
 ```HTML
 <div class="form-group">
@@ -379,6 +368,44 @@ Which yields:
   </div>
 </div>
 ```
+
+
+
+
+<a name="attributes"/>
+## Attributes
+
+All mixins accept appended attributes so you can your add own classes and IDs. For instance:
+
+```Jade
++field({ name: 'username' })#js-username-hook
+```
+
+Will yield:
+
+```HTML
+<input name="username" type="text" class="form-control" id="js-username-hook">
+```
+
+##### They can also be chained:
+
+```Jade
++labelled-field({ label: 'Username', name: 'username' })#special-field.big-field.light-text
+```
+
+Will yield:
+
+```HTML
+<div class="form-group">
+  <label class="col-sm-3">Username</label>
+  <div class="col-sm-9">
+    <input type="text" name="username" class="form-control big-field light-text" id="special-field">
+  </div>
+</div>
+```
+
+> ###### Note
+> Attributes are applied to the field itself and not a wrapper. You can wrap your mixin `#my-wrapper-id: +mixin(args)` if you need more control. Also classes append to the existing `.form-control` class rather than replace it.
 
 
 
