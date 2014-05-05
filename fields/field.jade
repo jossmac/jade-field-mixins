@@ -1,14 +1,14 @@
 //- Base field
 //- 
 //- Accepted arguments:
-//- * type (String)
+//- * type (String) : defaults to "text"
 //- * name (String)
 //- * value (String)
 //- * placeholder (String)
 
 mixin field(args)
 	input.form-control(
-		type=args.type ? args.type : null
+		type=args.type ? args.type : 'text'
 		name=args.name ? args.name : null
 		value=args.value ? args.value : null
 		placeholder=args.placeholder ? args.placeholder : null
