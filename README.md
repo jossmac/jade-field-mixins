@@ -57,7 +57,7 @@ Will yield:
 
 ### Checkbox
 
-A simple checkbox. Accepted arguments:
+For a single checkbox, or list of checkboxes. Accepted arguments:
 * checkboxlabel (String)
 * name (String)
 * value (String) : defaults to "true"
@@ -77,6 +77,77 @@ Will yield:
     I accept the Terms and Conditions
   </label>
 </div>
+```
+
+
+### Checkbox Inline
+
+For a group of inline checkboxes. Accepted arguments:
+* checkboxlabel (String)
+* name (String)
+* value (String) : defaults to "true"
+* checked (Boolean)
+* disabled (Boolean)
+
+```Jade
++checkbox-inline({ checkboxlabel: 'I accept the Terms and Conditions', name: 'acceptedTermsAndConditions' })
+```
+
+Will yield:
+
+```HTML
+<label class="checkbox-inline">
+  <input type="checkbox" value="true" name="acceptedTermsAndConditions">
+  I accept the Terms and Conditions
+</label>
+```
+
+
+### Radio Button
+
+For a single radio button, or list of radio buttons. Accepted arguments:
+* radiolabel (String)
+* name (String)
+* value (String)
+* checked (Boolean)
+* disabled (Boolean)
+
+```Jade
++radio({ radiolabel: 'Jade', name: 'templatelang_jade' })
+```
+
+Will yield:
+
+```HTML
+<div class="radio">
+  <label>
+    <input type="radio" value="true" name="templatelang_jade">
+    Jade
+  </label>
+</div>
+```
+
+
+### Radio Button Inline
+
+For a group of inline radio buttons. Accepted arguments:
+* radiolabel (String)
+* name (String)
+* value (String)
+* checked (Boolean)
+* disabled (Boolean)
+
+```Jade
++radio-inline({ radiolabel: 'Jade', name: 'templatelang_jade' })
+```
+
+Will yield:
+
+```HTML
+<label class="radio-inline">
+  <input type="radio" value="true" name="templatelang_jade">
+  Jade
+</label>
 ```
 
 

@@ -1,9 +1,9 @@
 {
-  "name": "field-mixins",
+  "name": "jade-field-mixins",
   "version": "0.0.1",
   "dependencies": {},
   "ignore": [
-      "styles/bootstrap",
+      ".editorconfig",
       ".gitignore",
       "bower.json",
       "gruntfile.js",
