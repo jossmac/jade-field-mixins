@@ -1,0 +1,18 @@
+//- Radio
+//- 
+//- Accepted arguments:
+//- * radiolabel (String)
+//- * name (String)
+//- * value (String)
+//- * checked (Boolean)
+//- * disabled (Boolean)
+
+mixin radio(args)
+	.radio(id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null): label
+		input(
+			type='radio'
+			name=args.name
+			value=args.value
+			checked=args.checked
+			disabled=args.disabled)
+		!= args.radiolabel

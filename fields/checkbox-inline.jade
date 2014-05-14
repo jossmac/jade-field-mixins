@@ -1,4 +1,4 @@
-//- Checkbox
+//- Checkbox Inline
 //- 
 //- Accepted arguments:
 //- * checkboxlabel (String)
@@ -7,12 +7,13 @@
 //- * checked (Boolean)
 //- * disabled (Boolean)
 
-mixin checkbox(args)
-	.checkbox(id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null): label
+mixin checkbox-inline(args)
+	label.checkbox-inline(id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null)
 		input(
 			type='checkbox'
 			name=args.name
 			value=args.value ? args.value : 'true'
 			checked=args.checked
 			disabled=args.disabled)
+		|  
 		!= args.checkboxlabel
