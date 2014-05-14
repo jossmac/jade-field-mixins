@@ -9,8 +9,9 @@
 
 mixin labelled-readonly-field(args)
 	.form-group
-		label.col-xs-3= args.label
-		if args.url
-			.col-xs-9: a(href=args.url, title='View the ' + args.label)= args.value
-		else
-			.col-xs-9= args.value
+		.col-sm-3!= args.label
+		.col-sm-9
+			if args.url
+				a(href=args.url, title='View the ' + args.label, id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null)= args.value
+			else
+				span(id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null)= args.value

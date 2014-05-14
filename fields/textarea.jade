@@ -10,4 +10,4 @@ mixin textarea(args)
 		name=args.name ? args.name : null
 		placeholder=args.placeholder ? args.placeholder : null
 		class=attributes.class
-		id=attributes.id)= args.value ? args.value : null
+		id=attributes.id ? attributes.id : null)= args.value ? args.value : null

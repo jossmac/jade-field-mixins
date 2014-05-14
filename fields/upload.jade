@@ -5,10 +5,12 @@
 //- * info (String)
 
 mixin upload(args)
-	.field-upload(class=attributes.class, id=attributes.id)
+	.field-upload
 		input(
 			type='file'
-			name=args.name)
+			name=args.name
+			class=attributes.class
+			id=attributes.id ? attributes.id : null)
 		if args.info
 			.form-info= args.info
 

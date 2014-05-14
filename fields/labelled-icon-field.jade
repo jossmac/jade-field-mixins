@@ -10,7 +10,7 @@ include icon-field
 
 mixin labelled-icon-field(args)
 	.form-group
-		label(for=attributes.id ? attributes.id : null).col-sm-3= args.label
+		label(for=attributes.id ? attributes.id : null).col-sm-3!= args.label
 		.col-sm-9
 			+icon-field(args)(id=attributes.id,class=attributes.class)
 			if args.info
