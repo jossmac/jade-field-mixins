@@ -5,9 +5,40 @@ A collection of [Jade mixins](http://jade-lang.com/reference/#mixins) for defini
 
 To get a better idea of how you might use them checkout the [real world example](http://www.jossmackison.me/playpen/field-mixins).
 
-##### Table of Contents  
-- [Standalone fields](#standalone)
-- [Labelled fields](#labelled)
+
+
+
+## Quickstart
+
+If you have [Bower](http://bower.io/) installed run the following command in the root of your project:
+
+```bash
+bower install jade-field-mixins
+```
+
+
+
+
+## Table of Contents  
+- [Standalone](#standalone)
+  - [Field](#field)
+  - [Textarea](#textarea)
+  - [Checkbox](#checkbox)
+  - [Checkbox Inline](#checkbox-inline)
+  - [Radio Button](#radio-button)
+  - [Radio Button Inline](#radio-button-inline)
+  - [Address field](#address-field)
+  - [Upload](#upload)
+  - [Icon Field](#icon-field)
+  - [Character Field](#character-field)
+  - [Button](#button)
+- [Labelled](#labelled)
+  - [Labelled Field](#labelled-field)
+  - [Labelled Textarea](#labelled-textarea)
+  - [Labelled Checkbox](#labelled-checkbox)
+  - [Labelled Address field](#labelled-address-field)
+  - [Labelled Upload](#labelled-upload)
+  - [Labelled Button](#labelled-button)
 - [Attributes](#attributes)
 
 
@@ -15,9 +46,9 @@ To get a better idea of how you might use them checkout the [real world example]
 
 
 <a name="standalone"/>
-## Standalone fields
+## Standalone Fields
 
-
+<a name="field">
 ### Field
 
 The base input field that we extend to build everything. Accepted arguments:
@@ -36,7 +67,7 @@ Will yield:
 <input type="email" class="form-control" name="email" value="email@example.com" placeholder="Email Address">
 ```
 
-
+<a name="textarea">
 ### Textarea
 
 A simple textarea. Accepted arguments:
@@ -54,7 +85,7 @@ Will yield:
 <textarea name="message" class="form-control" placeholder="Message">Hi there</textarea>
 ```
 
-
+<a name="checkbox">
 ### Checkbox
 
 For a single checkbox, or list of checkboxes. Accepted arguments:
@@ -79,7 +110,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="checkbox-inline">
 ### Checkbox Inline
 
 For a group of inline checkboxes. Accepted arguments:
@@ -102,7 +133,7 @@ Will yield:
 </label>
 ```
 
-
+<a name="radio-button">
 ### Radio Button
 
 For a single radio button, or list of radio buttons. Accepted arguments:
@@ -127,7 +158,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="radio-button-inline">
 ### Radio Button Inline
 
 For a group of inline radio buttons. Accepted arguments:
@@ -150,7 +181,7 @@ Will yield:
 </label>
 ```
 
-
+<a name="address-field">
 ### Address field
 
 A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/database/#fieldtypes-location). Accepted arguments:
@@ -186,7 +217,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="upload">
 ### Upload
 
 Browsers provide nice, native UI for file fields; let them handle it. Accepted arguments:
@@ -204,7 +235,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="icon-field">
 ### Icon Field
 
 Display an icon left of the field to indicate context to the user eg; "ion-social-twitter" from the amazing [Ionicons icon set](http://ionicons.com)
@@ -228,7 +259,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="character-field">
 ### Character Field
 
 Display a character left of the field to indicate context to the user eg; "$" for a money field
@@ -250,7 +281,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="button">
 ### Button
 
 Buttons rather than `<input type="submit">` because they're more flexible. Accepted arguments:
@@ -274,10 +305,10 @@ Will yield:
 
 
 <a name="labelled"/>
-## Labelled fields
+## Labelled Fields
 
 Labelled fields include their dependent mixins so you don't have to. For instance "+labelled-field()" includes "mixin field()" etc. These mixins expect a parent of '.form-horizontal' to display a label left of the field. Learn more about [Bootsrap forms](http://getbootstrap.com/css/#forms-horizontal)
-
+<a name="labelled-field">
 ### Labelled field
 
 Accepted arguments:
@@ -299,7 +330,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="labelled-textarea">
 ### Labelled Textarea
 
 Accepted arguments:
@@ -321,7 +352,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="labelled-checkbox">
 ### Labelled Checkbox
 
 Offset the checkbox so its inline with the rest of the fields, leaving the label column empty. Accepted arguments:
@@ -350,7 +381,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="labelled-address-field">
 ### Labelled Address field
 
 A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/database/#fieldtypes-location). Accepted arguments:
@@ -392,7 +423,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="labelled-upload">
 ### Labelled Upload
 
 Browsers provide nice, native UI for file fields; let them handle it. Accepted arguments:
@@ -416,7 +447,7 @@ Will yield:
 </div>
 ```
 
-
+<a name="labelled-button">
 ### Labelled Button
 
 Offset the button so its inline with the rest of the fields. Leaving the label column empty. Accepted arguments:
