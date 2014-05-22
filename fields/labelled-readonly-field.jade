@@ -12,6 +12,6 @@ mixin labelled-readonly-field(args)
 		.col-sm-3!= args.label
 		.col-sm-9
 			if args.url
-				a(href=args.url, title='View the ' + args.label, id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null)= args.value
+				a(href=args.url, title='View the ' + args.label, id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null).form-control--readonly!= args.value
 			else
-				span(id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null)= args.value
+				span(id=attributes.id ? attributes.id : null, class=attributes.class ? attributes.class : null).form-control--readonly!= args.value

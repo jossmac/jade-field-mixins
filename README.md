@@ -23,6 +23,7 @@ bower install jade-field-mixins
 - [Standalone](#standalone)
   - [Field](#field)
   - [Textarea](#textarea)
+  - [Cloudinary Image](#cloudinary-image)
   - [Checkbox](#checkbox)
   - [Checkbox Inline](#checkbox-inline)
   - [Radio Button](#radio-button)
@@ -35,6 +36,7 @@ bower install jade-field-mixins
 - [Labelled](#labelled)
   - [Labelled Field](#labelled-field)
   - [Labelled Textarea](#labelled-textarea)
+  - [Labelled Cloudinary Image](#labelled-cloudinary-image)
   - [Labelled Checkbox](#labelled-checkbox)
   - [Labelled Address field](#labelled-address-field)
   - [Labelled Upload](#labelled-upload)
@@ -45,7 +47,7 @@ bower install jade-field-mixins
 
 
 
-<a name="standalone"/>
+<a name="standalone">
 ## Standalone Fields
 
 <a name="field">
@@ -83,6 +85,45 @@ Will yield:
 
 ```HTML
 <textarea name="message" class="form-control" placeholder="Message">Hi there</textarea>
+```
+
+<a name="cloudinary-image">
+### Cloudinary Image
+
+Detect the existance of an image and display it, otherwise just show the upload field. Accepted arguments:
+* name (String)
+* value (Object) { secure_url, url, resource_type, format, height, width, signature, version, public_id }
+* dimensions (Boolean) displays the image dimensions top left
+* url (Boolean) provides a url for the full image
+* upload args (name, note)
+
+```Jade
++cloudinary_image({ name: 'profileAvatarImage', value: {...}, dimensions: true, url: true, note: 'Recommended: 200&times;300px' })
+```
+
+Will yield:
+
+```HTML
+<div class="image-field">
+  <div class="image-field__object">
+    <a class="image-field__url" href="...">
+      <img class="image-field__image" src="...">
+    </a>
+    <span class="image-field__dimensions">400 × 600</span>
+  </div>
+  <div class="image-field__body">
+    <div class="field-upload">
+      <input type="file" name="profileAvatarImage_upload">
+      <div class="form-info">Recommended: 200×300px</div>
+    </div>
+    <label class="image-field__label">
+      <input type="checkbox" class="image-field__checkbox" value="delete" name="profileAvatarImage_action">
+        <span class="btn btn-narrow btn-default image-field__label-remove">Remove</span>
+        <span class="btn btn-narrow btn-default image-field__label-undo">Undo</span>
+        <span class="image-field__label-save">Removed. Save to delete.</span>
+    </label>
+  </div>
+</div>
 ```
 
 <a name="checkbox">
@@ -192,7 +233,7 @@ A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/dat
 > The location field also stores "name', "number', "country', and "geo" whilst this mixin ignores them.
 
 ```Jade
-+address-field({ name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
++address-field({ name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } })
 ```
 
 Will yield:
@@ -304,12 +345,12 @@ Will yield:
 
 
 
-<a name="labelled"/>
+<a name="labelled">
 ## Labelled Fields
 
 Labelled fields include their dependent mixins so you don't have to. For instance "+labelled-field()" includes "mixin field()" etc. These mixins expect a parent of '.form-horizontal' to display a label left of the field. Learn more about [Bootsrap forms](http://getbootstrap.com/css/#forms-horizontal)
 <a name="labelled-field">
-### Labelled field
+### Labelled Field
 
 Accepted arguments:
 * label (String)
@@ -348,6 +389,51 @@ Will yield:
   <label class="col-sm-3">Summary</label>
   <div class="col-sm-9">
     <textarea class="form-control" placeholder="Tell us about yourself" name="summary">Programmer, author &amp; artist. Creator of the Luna programming language, Express, Koa, Stylus, Component, Mocha, Jade, rework, node-canvas and others. Pastafarian</textarea>
+  </div>
+</div>
+```
+
+<a name="labelled-cloudinary-image">
+### Labelled Cloudinary Image
+
+Detect the existance of an image and display it, otherwise just show the upload field. Accepted arguments:
+* label (String)
+* name (String)
+* value (Object) { secure_url, url, resource_type, format, height, width, signature, version, public_id }
+* dimensions (Boolean) displays the image dimensions top left
+* url (Boolean) provides a url for the full image
+* upload args (name, note)
+
+```Jade
++cloudinary_image({ label: 'Profile Image', name: 'profileAvatarImage', value: {...}, dimensions: true, url: true, note: 'Recommended: 200&times;300px' })
+```
+
+Will yield:
+
+```HTML
+<div class="form-group">
+  <label class="col-sm-3">Profile Image</label>
+  <div class="col-sm-9">
+    <div class="image-field">
+      <div class="image-field__object">
+        <a class="image-field__url" href="...">
+          <img class="image-field__image" src="...">
+        </a>
+        <span class="image-field__dimensions">400 × 600</span>
+      </div>
+      <div class="image-field__body">
+        <div class="field-upload">
+          <input type="file" name="profileAvatarImage_upload">
+          <div class="form-info">Recommended: 200×300px</div>
+        </div>
+        <label class="image-field__label">
+          <input type="checkbox" class="image-field__checkbox" value="delete" name="profileAvatarImage_action">
+            <span class="btn btn-narrow btn-default image-field__label-remove">Remove</span>
+            <span class="btn btn-narrow btn-default image-field__label-undo">Undo</span>
+            <span class="image-field__label-save">Removed. Save to delete.</span>
+        </label>
+      </div>
+    </div>
   </div>
 </div>
 ```
@@ -393,7 +479,7 @@ A tidy layout for the [KeystoneJS location field](http://keystonejs.com/docs/dat
 > The location field also stores "name', "number', "country', and "geo".
 
 ```Jade
-+address-field({ label: 'Address', name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } }).input-lg
++address-field({ label: 'Address', name: 'location', value: { street1: 'Shop 36, 468 Oxford St', suburb: 'Bondi', state: 'NSW', postcode: '2098' } })
 ```
 
 Will yield:
@@ -474,10 +560,10 @@ Will yield:
 
 
 
-<a name="attributes"/>
+<a name="attributes">
 ## Attributes
 
-All mixins accept appended attributes so you can your add own classes and IDs. For instance:
+All mixins accept appended attributes so you can add your own classes and IDs. For instance:
 
 ```Jade
 +field({ name: 'username' })#js-username-hook

@@ -1,0 +1,13 @@
+//- Labelled Cloudinary Image
+//- 
+//- Accepted arguments:
+//- * label
+//- * field args (type, name, info)
+
+include cloudinary_image
+
+mixin labelled-cloudinary_image(args)
+	.form-group
+		label(for=attributes.id ? attributes.id : null).col-sm-3= args.label
+		.col-sm-9
+			+cloudinary_image(args)(id=attributes.id,class=attributes.class)

@@ -1,0 +1,253 @@
+//
+// Fields
+// ==============================
+
+/*
+	Extends Bootstrap's arsenal
+	
+	* "bootstrap/buttons.less";
+	* "bootstrap/forms.less";
+	* "bootstrap/mixins.less";
+	* "bootstrap/variables.less";
+*/
+
+
+
+
+// Misc
+// -------------------------
+
+
+// bootstrap uses chubby labels
+
+label {
+	font-weight: normal;
+}
+
+
+// stop users pulling the textarea out of it's column
+// and provide some room to write
+
+textarea {
+	.resizable(vertical);
+	min-height: 80px;
+}
+
+
+// properly align your label to the text inside the input field
+
+.form-horizontal .form-group > label {
+	padding-top: @padding-base-vertical;
+}
+
+
+// when you need to give your users' a helping hand
+
+.form-note {
+	color: #999;
+	font-size: .85em;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+
+
+
+// Controls
+// -------------------------
+
+
+// buttons
+
+.btn-narrow {
+	line-height: 1;
+}
+
+
+// base
+
+.form-control {
+	color: @text-color;
+	font-size: inherit;
+	-webkit-appearance: none;
+}
+
+
+// helpers
+
+.full-width {
+	width: 100%;
+}
+
+
+// alternative to '.form-group' use when inside '.form-horizontal' to avoid 
+// your container becoming a row
+
+.form-control-wrapper {
+	margin-bottom: 1em;
+}
+
+
+// use as an alternative to ".row" for form columns to avoid the _huge_ gap
+
+.form-control-row {
+	.clearfix();
+	margin-left: -5px;
+	margin-right: -5px;
+	
+	
+	// whilst this selector performs poorly it's not a big deal in small apps
+	
+	[class^='col-'] {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+
+
+// read only form control
+
+.form-control--readonly {
+	background-color: @gray-lightest;
+	border-radius: @input-border-radius;
+	display: inline-block;
+	padding: @padding-base-vertical @padding-base-horizontal;
+	
+	// links get highlighted
+	a& {
+		background-color: mix(white, @link-color, 90%)
+	}
+	
+	// stop the element from collapsing
+	&:empty {
+		color: @gray-light;
+		&:after {
+			content: 'null';
+		}
+	}
+}
+
+
+// optimal font size for browser buttons
+
+.form-control--upload {
+	font-size: 13px;
+	padding-top: @padding-base-vertical;
+}
+
+
+// define widths for fields inside '.form-inline'
+// browsers default to ~150px
+
+.field-inline-xs { width: 50px; }
+.field-inline-sm { width: 100px; }
+.field-inline-md { width: 200px; }
+.field-inline-lg { width: 300px; }
+.field-inline-xl { width: 400px; }
+
+
+
+
+// Icon & Character Fields
+// ------------------------------
+
+
+.icon-field,
+.character-field {
+	position: relative;
+	
+	.form-control {
+		padding-left: ceil(@font-size-base * 1.5) + @padding-base-horizontal;
+	}
+	
+	.icon,
+	.character {
+		.translate(0,-50%);
+		color: @input-color-placeholder;
+		left: @padding-base-horizontal;
+		pointer-events: none;
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		width: @padding-base-horizontal;
+	}
+}
+
+
+
+
+// Image Field
+// ------------------------------
+
+.image-field {
+	.clearfix();
+	.image-field__checkbox:checked {
+		& ~ .image-field__label-undo,
+		& ~ .image-field__label-save {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		& ~ .image-field__label-remove {
+			display: none;
+		}
+	}
+}
+.image-field__checkbox {
+	display: none;
+}
+.image-field__body {
+	overflow: hidden;
+}
+.image-field__object {
+	float: left;
+	margin-right: 1em;
+	position: relative;
+}
+.image-field__image {
+	border: 1px solid @gray-lighter;
+	border-radius: 2px;
+	display: inline-block;
+	height: auto;
+	max-width: 100%;
+	padding: 4px;
+}
+
+
+// user interaction buttons/labels
+
+.image-field__label {
+	margin-top: 1em;
+}
+.image-field__label-save {
+	color: @brand-success;
+	padding: @padding-base-vertical @padding-base-horizontal;
+	position: absolute;
+	pointer-events: none;
+}
+.image-field__label-undo,
+.image-field__label-save {
+	display: none;
+}
+
+
+// display the image dimensions over the top
+
+.image-field__dimensions {
+	border-radius: 2px;
+	background-color: rgba(0, 0, 0, 0.66);
+	color: #fff;
+	content: attr(title);
+	font-size: 11px;
+	font-weight: 500;
+	left: 10px;
+	padding-left: 4px;
+	padding-right: 4px;
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	top: 10px;
+	z-index: 3;
+}
+
+
+

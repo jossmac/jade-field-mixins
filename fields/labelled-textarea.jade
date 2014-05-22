@@ -13,5 +13,3 @@ mixin labelled-textarea(args)
 		label(for=attributes.id ? attributes.id : null).col-sm-3!= args.label
 		.col-sm-9
 			+textarea(args)(id=attributes.id,class=attributes.class)
-			if args.info
-				.form-info= args.info

@@ -1,0 +1,34 @@
+//- Cloudinary Image
+//- 
+//- Accepted arguments:
+//- * name (String)
+//- * value (Object) { secure_url, url, resource_type, format, height, width, signature, version, public_id }
+//- * dimensions (Boolean) displays the image dimensions top left
+//- * url (Boolean) provides a url for the full image
+//- * upload args (name, note)
+
+include upload
+
+mixin cloudinary_image(args)
+	if args.value.exists
+		.image-field
+			.image-field__object
+				if args.url
+					a(href=args.value.url).image-field__url: img(src=args.value.url.replace('upload/', 'upload/c_fit,h_150,w_150/')).image-field__image
+				else
+					img(src=args.value.url.replace('upload/', 'upload/c_fit,h_150,w_150/')).image-field__image
+				if args.dimensions
+					span.image-field__dimensions #{args.value.width} &times; #{args.value.height}
+			.image-field__body
+				+upload({ name: args.name + '_upload', note: args.note })(id=attributes.id,class=attributes.class)
+				label.image-field__label
+					input(type='checkbox' name=args.name + '_action' value='delete').image-field__checkbox
+					span.btn.btn-default.btn-narrow.image-field__label-remove Remove
+					span.btn.btn-default.btn-narrow.image-field__label-undo Undo
+					span.image-field__label-save
+						span.ion-checkmark
+						|  Removed. Save to delete.
+	else
+		+upload({ name: args.name + '_upload', note: args.note })(id=attributes.id,class=attributes.class)
+
+
