@@ -34,6 +34,13 @@ textarea {
 }
 
 
+// return file buttons to their native size
+
+input[type='file'] {
+	font-size: small;
+}
+
+
 // properly align your label to the text inside the input field
 
 .form-horizontal .form-group > label {
@@ -128,24 +135,6 @@ textarea {
 }
 
 
-// optimal font size for browser buttons
-
-.form-control--upload {
-	font-size: 13px;
-	padding-top: @padding-base-vertical;
-}
-
-
-// define widths for fields inside '.form-inline'
-// browsers default to ~150px
-
-.field-inline-xs { width: 50px; }
-.field-inline-sm { width: 100px; }
-.field-inline-md { width: 200px; }
-.field-inline-lg { width: 300px; }
-.field-inline-xl { width: 400px; }
-
-
 
 
 // Icon & Character Fields
@@ -156,12 +145,12 @@ textarea {
 .character-field {
 	position: relative;
 	
-	.form-control {
+	> .form-control {
 		padding-left: ceil(@font-size-base * 1.5) + @padding-base-horizontal;
 	}
 	
-	.icon,
-	.character {
+	> .icon,
+	> .character {
 		.translate(0,-50%);
 		color: @input-color-placeholder;
 		left: @padding-base-horizontal;
