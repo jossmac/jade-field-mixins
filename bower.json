@@ -2,8 +2,8 @@
   "name": "jade-field-mixins",
   "version": "0.0.1",
   "main": [
-    "fields/**",
-    "styles/**"
+    "fields/*",
+    "styles/*"
   ],
   "dependencies": {},
   "ignore": [
